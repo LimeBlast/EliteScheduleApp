@@ -4,7 +4,7 @@
       <div ng-repeat="division in vm.standings">
         <div class="item item-divider item-energized">{{division.divisionName}}</div>
 
-        <a href="#/app/teams/{{team.id}}" class="item item-icon-right"
+        <a href="#/app/teams/{{team.teamId}}" class="item item-icon-right"
            ng-repeat="team in division.divisionStandings">
           {{team.teamName}} ({{team.wins}}-{{team.losses}})
           <i class="icon ion-chevron-right icon-accessory"></i>
