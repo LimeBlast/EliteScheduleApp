@@ -1,5 +1,9 @@
-<ion-view ng-controller="LeaguesCtrl">
+<ion-view ng-controller="LeaguesCtrl as vm">
   <ion-content class="has-header">
-    <h1>Leagues</h1>
+    <div class="list">
+      <a class="item" ng-repeat="league in vm.leagues">
+        {{league.name}}
+      </a>
+    </div>
   </ion-content>
 </ion-view>

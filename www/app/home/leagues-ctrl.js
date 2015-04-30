@@ -7,9 +7,7 @@
     var vm = this;
 
     var leagues = eliteApi.getLeagues();
-    var leagueData = eliteApi.getLeagueData();
-
-    console.log(leagues, leagueData);
+    vm.leagues = leagues;
 
   }
 })();
