@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('eliteApp').controller('teamDetailCtrl', ['$stateParams', teamDetailCtrl]);
+  angular.module('eliteApp').controller('TeamDetailCtrl', ['$stateParams', TeamDetailCtrl]);
 
-  function teamDetailCtrl($stateParams) {
+  function TeamDetailCtrl($stateParams) {
     var vm = this;
 
     console.log("$stateParams", $stateParams);
