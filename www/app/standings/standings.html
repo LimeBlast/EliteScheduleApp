@@ -6,7 +6,53 @@
 
         <a href="#/app/teams/{{team.teamId}}" class="item item-icon-right"
            ng-repeat="team in division.divisionStandings">
-          {{team.teamName}} ({{team.wins}}-{{team.losses}})
+
+          <div class="row">
+            <div class="col">
+              <p>{{team.teamName}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Wins</p>
+            </div>
+            <div class="col">
+              <p>Losses</p>
+            </div>
+            <div class="col">
+              <p>Pct</p>
+            </div>
+            <div class="col">
+              <p>PF</p>
+            </div>
+            <div class="col">
+              <p>PA</p>
+            </div>
+            <div class="col">
+              <p>Diff</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>{{team.wins}}</p>
+            </div>
+            <div class="col">
+              <p>{{team.losses}}</p>
+            </div>
+            <div class="col">
+              <p>{{team.winningPct}}</p>
+            </div>
+            <div class="col">
+              <p>{{team.pointsFor}}</p>
+            </div>
+            <div class="col">
+              <p>{{team.pointsAgainst}}</p>
+            </div>
+            <div class="col">
+              <p>{{team.pointsDiff}}</p>
+            </div>
+          </div>
+
           <i class="icon ion-chevron-right icon-accessory"></i>
         </a>
       </div>
