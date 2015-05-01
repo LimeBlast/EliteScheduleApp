@@ -13,7 +13,7 @@
         latitude: 38.897677,
         longitude: -77.036530
       },
-      zoom: 12
+      zoom: 16
     };
     vm.marker = {};
 
