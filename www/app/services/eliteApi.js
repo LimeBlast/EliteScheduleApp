@@ -65,7 +65,7 @@
           .error(function () {
             console.log('Error while making HTTP call.');
             $ionicLoading.hide();
-            deferred.reject(data);
+            deferred.reject();
           });
       }
 
@@ -93,7 +93,7 @@
           .error(function () {
             console.log('Error while making HTTP call.');
             $ionicLoading.hide();
-            deferred.reject(data)
+            deferred.reject()
           });
       }
 
