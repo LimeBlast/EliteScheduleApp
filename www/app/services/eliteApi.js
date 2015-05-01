@@ -1,22 +1,26 @@
 (function () {
   'use strict';
 
-  angular.module('eliteApp').factory('eliteApi', ['$http', '$q', eliteApi]);
+  angular.module('eliteApp').factory('eliteApi', ['$http', '$q', '$ionicLoading', eliteApi]);
 
-  function eliteApi($http, $q) {
+  function eliteApi($http, $q, $ionicLoading) {
 
     var currentLeagueId;
 
     function getLeagues() {
       var deferred = $q.defer();
+      $ionicLoading.show({template: 'Loading...'});
 
       $http.get('http://elite-schedule.net/api/leaguedata')
-        .success(function (data) {
-          deferred.resolve(data)
+        .success(function (data, status) {
+          console.log('Received data via HTTP.', data, status);
+          $ionicLoading.hide();
+          deferred.resolve(data);
         })
         .error(function () {
           console.log('Error while making HTTP call.');
-          deferred.reject(data)
+          $ionicLoading.hide();
+          deferred.reject(data);
         });
 
       return deferred.promise;
@@ -24,14 +28,17 @@
 
     function getLeagueData() {
       var deferred = $q.defer();
+      $ionicLoading.show({template: 'Loading...'});
 
       $http.get('http://elite-schedule.net/api/leaguedata/' + currentLeagueId)
         .success(function (data, status) {
-          console.log('Received schedule data via HTTP.', data, status);
+          console.log('Received data via HTTP.', data, status);
+          $ionicLoading.hide();
           deferred.resolve(data)
         })
         .error(function () {
           console.log('Error while making HTTP call.');
+          $ionicLoading.hide();
           deferred.reject(data)
         });
 
