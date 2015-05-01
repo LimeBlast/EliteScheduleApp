@@ -72,10 +72,18 @@
       return deferred.promise;
     }
 
-    function getLeagueData() {
+    function getLeagueData(forceRefresh) {
+      if (typeof forceRefresh === 'undefined') {
+        forceRefresh = false
+      }
+
       var deferred = $q.defer(),
         cacheKey = 'leagueData-' + getLeagueId(),
+        leagueData = null;
+
+      if (!forceRefresh) {
         leagueData = self.leagueDataCache.get(cacheKey);
+      }
 
       if (leagueData) {
         console.log('Found data inside cache', leagueData);
