@@ -1,27 +1,39 @@
 (function () {
   'use strict';
 
-  angular.module('eliteApp').factory('eliteApi', ['$http', '$q', '$ionicLoading', eliteApi]);
+  angular.module('eliteApp').factory('eliteApi', ['$http', '$q', '$ionicLoading', 'DSCacheFactory', eliteApi]);
 
-  function eliteApi($http, $q, $ionicLoading) {
+  function eliteApi($http, $q, $ionicLoading, DSCacheFactory) {
 
     var currentLeagueId;
 
-    function getLeagues() {
-      var deferred = $q.defer();
-      $ionicLoading.show({template: 'Loading...'});
+    self.leaguesCache = DSCacheFactory.get('leaguesCache');
+    self.leagueDataCache = DSCacheFactory.get('leagueDataCache');
 
-      $http.get('http://elite-schedule.net/api/leaguedata')
-        .success(function (data, status) {
-          console.log('Received data via HTTP.', data, status);
-          $ionicLoading.hide();
-          deferred.resolve(data);
-        })
-        .error(function () {
-          console.log('Error while making HTTP call.');
-          $ionicLoading.hide();
-          deferred.reject(data);
-        });
+    function getLeagues() {
+      var deferred = $q.defer(),
+        cacheKey = 'Leagues',
+        leaguesData = self.leaguesCache.get(cacheKey);
+
+      if (leaguesData) {
+        console.log('Found data inside cache', leaguesData);
+        deferred.resolve(leaguesData);
+      } else {
+        $ionicLoading.show({template: 'Loading...'});
+
+        $http.get('http://elite-schedule.net/api/leaguedata')
+          .success(function (data, status) {
+            console.log('Received data via HTTP.', data, status);
+            self.leaguesCache.put(cacheKey, data);
+            $ionicLoading.hide();
+            deferred.resolve(data);
+          })
+          .error(function () {
+            console.log('Error while making HTTP call.');
+            $ionicLoading.hide();
+            deferred.reject(data);
+          });
+      }
 
       return deferred.promise;
     }
