@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.elitescheduleapp559902" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="uk.co.limeblast.eliteschedule" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Elite Schedule</name>
   <description>
-        An Ionic Framework and Cordova project.
+        The Elite Schedule App
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="daniel@limeblast.co.uk" href="http://limeblast.co.uk/">
+      Daniel Hollands
     </author>
   <content src="index.html"/>
   <access origin="*"/>
